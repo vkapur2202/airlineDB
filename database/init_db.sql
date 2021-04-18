@@ -1,0 +1,72 @@
+DROP TABLE IF EXISTS "plane" CASCADE;
+DROP TABLE IF EXISTS "customer" CASCADE;
+DROP TYPE IF EXISTS "job" CASCADE;
+DROP TABLE IF EXISTS "employee" CASCADE;
+DROP TABLE IF EXISTS "airport" CASCADE;
+DROP TABLE IF EXISTS "flight" CASCADE;
+DROP TYPE IF EXISTS "seat" CASCADE;
+DROP TABLE IF EXISTS "trip" CASCADE;
+DROP TABLE IF EXISTS "bag" CASCADE;
+
+CREATE TABLE IF NOT EXISTS "plane" (
+  pid SERIAL PRIMARY KEY,
+  model VARCHAR(100) NOT NULL,
+  noBuisinessSeats INTEGER NOT NULL,
+  noEconomySeats INTEGER NOT NULL,
+  noPilotSeats INTEGER NOT NULL,
+  noFlightAttendantSeats INTEGER NOT NULL,
+  carryOnCapacity INTEGER NOT NULL,
+  checkInCapacity INTEGER NOT NULL,
+  maxWeight INTEGER NOT NULL,
+  range INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "customer" (
+  cid SERIAL PRIMARY KEY,
+  cname VARCHAR(100) NOT NULL,
+  username VARCHAR(15) NOT NULL,
+  password VARCHAR(25) NOT NULL
+);
+
+CREATE TYPE job AS ENUM('pilot', 'flightAttendant');
+
+CREATE TABLE IF NOT EXISTS "employee" (
+  eid SERIAL PRIMARY KEY,
+  ename VARCHAR(50) NOT NULL,
+  jobTitle job NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "airport" (
+  aid SERIAL PRIMARY KEY,
+  aname VARCHAR(50) NOT NULL,
+  city VARCHAR(25) NOT NULL,
+  numGates INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "flight" (
+  fid SERIAL PRIMARY KEY,
+  pid INTEGER NOT NULL REFERENCES "plane",
+  eid INTEGER NOT NULL REFERENCES "employee",
+  startAid INTEGER NOT NULL REFERENCES "airport",
+  destinationAid INTEGER NOT NULL REFERENCES "airport",
+  distance INTEGER NOT NULL,
+  departureGate INTEGER NOT NULL,
+  arrivalGate INTEGER NOT NULL
+);
+
+CREATE TYPE seat AS ENUM('pilot', 'flightAttendant’, ‘customer');
+
+CREATE TABLE IF NOT EXISTS "trip" (
+  tid SERIAL PRIMARY KEY,
+  fid INTEGER NOT NULL REFERENCES "flight",
+  cid INTEGER NOT NULL REFERENCES "customer",
+  seatType seat NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "bag" (
+  bid SERIAL PRIMARY KEY,
+  bagType VARCHAR(50) NOT NULL,
+  weight VARCHAR(25) NOT NULL,
+  tid INTEGER NOT NULL REFERENCES "trip"
+);
+
