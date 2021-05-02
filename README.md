@@ -6,6 +6,10 @@ clone directory using
 or
 `git clone https://github.com/vkapur2202/airlineDB.git`
 
+cd into the project by typing 
+`cd airlineDB` 
+into your terminal.
+
 then, run:
 `npm install`
 in order to get all of the dev dependencies
