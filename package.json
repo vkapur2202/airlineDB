@@ -1,0 +1,27 @@
+{
+  "name": "airlineDB",
+  "version": "1.0.0",
+  "description": "airline management system",
+  "main": "index.js",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node": "^16.0.0",
+    "pg": "^8.6.0",
+    "psql": "^0.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkapur2202/airlineDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vkapur2202/airlineDB/issues"
+  },
+  "homepage": "https://github.com/vkapur2202/airlineDB#readme"
+}
