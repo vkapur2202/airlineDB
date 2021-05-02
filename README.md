@@ -14,10 +14,13 @@ then, run:
 `npm install`
 in order to get all of the dev dependencies
 
+in order to get your .env file working properly, use the link sent in the slack.
+create a file called .env (perhaps using `touch .env` in your terminal) within the root directory and then add the line of code:
+CONNECTION_STRING = {insert connection link here}
+
+execute `node index.js` to run the main file.
+
 in order to re-initialize the database (if any changes are made to the init_db.sql file), run the folloiwing command in the terminal with the appropriate password.
 
 psql --host=airline-management-db.cb7isu5t5kyq.us-east-2.rds.amazonaws.com --port=5432 --username postgres --password --dbname=airlinesDB < database/init_db.sql
 
-in order to get your .env file working properly, use the link sent in the slack.
-create a file called .env within the root directory and then add the line of code:
-CONNECTION_STRING = {insert connection link here}
