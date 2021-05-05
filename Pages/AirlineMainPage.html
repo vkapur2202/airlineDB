@@ -1,0 +1,136 @@
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #314c8c;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(49, 76, 140, 1), rgba(74, 123, 161, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(49, 76, 140, 1), rgba(74, 123, 161, 1));
+    }
+
+    .card-background {
+        background: rgba(49, 75, 140,0.8);
+    }
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+</head>
+<body class = "gradient-custom">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="./AirlineMainPage.html" class="pull-left"><img src="../Images/logo_resized.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="padding-top: 1em;">
+                        Flights
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="FlightSearch.html">Search Flights</a>
+                        <a class="dropdown-item" href="FlightCreate.html">Register Flight</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="padding-top: 1em;">
+                        Customers
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="CustomerCreate.html">Register New Customer</a>
+                        <a class="dropdown-item" href="CustomerFlightRegistration.html">Add Customer to Flight</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="padding-top: 1em;">
+                        Pilots
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="PilotCreate.html">Register Pilot</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="padding-top: 1em;">
+                        Airports
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="AirportCreate.html">Register Airport</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div style = "height: 3em;"></div>
+<div class = "row" align="center">
+    <div class = "col-lg-12 mx-auto" style="color: whitesmoke;">
+        <h1>Home Page</h1>
+    </div>
+</div>
+<div style = "height: 2em;"></div>
+<div style = "height: 5em;"></div>
+<div class="row">
+    <div class="col-sm-3" align = "center">
+        <div class="card text-center" style="width: 18rem; border-color: purple; border-radius: 1.5em">
+            <img class="card-img-top" src="../Images/raw_plane.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style = "color: #292986;">Flights</h5>
+                <p class="card-text">View upcoming flights and register upcoming flights into the system.</p>
+                <a href="./FlightSearch.html" class="btn btn-primary">Search Flights</a>
+            </div>
+            <div style = "height: 1rem"></div>
+        </div>
+    </div>
+    <div class="col-sm-3" align = "center">
+        <div class="card text-center" style="width: 18rem; border-color: blue; border-radius: 1.5em">
+            <img class="card-img-top" src="../Images/customer.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style = "color: #292986;">Customers</h5>
+                <p class="card-text">Register new customers and assign customers to upcoming flights.</p>
+                <a href="./CustomerFlightRegistration.html" class="btn btn-primary">Book Flights</a>
+            </div>
+            <div style = "height: 1rem"></div>
+        </div>
+    </div>
+    <div class="col-sm-3" align = "center">
+        <div class="card text-center" style="width: 18rem; border-color: green; border-radius: 1.5em">
+            <img class="card-img-top" src="../Images/raw_pilot.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style = "color: #292986;">Pilots</h5>
+                <p class="card-text">Register new Pilots into the system for all future flights.</p>
+                <a href="./PilotCreate.html" class="btn btn-primary">Register Pilot</a>
+            </div>
+            <div style = "height: 1rem"></div>
+        </div>
+    </div>
+    <div class="col-sm-3" align = "center">
+        <div class="card text-center" style="width: 18rem; border-color: yellow; border-radius: 1.5em">
+            <img class="card-img-top" src="../Images/raw_airport.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title" style = "color: #292986;">Airports</h5>
+                <p class="card-text">Enter new airports into ADMS for new flights to travel to and from.</p>
+                <a href="./AirportCreate.html" class="btn btn-primary">Register Airport</a>
+            </div>
+            <div style = "height: 1rem"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
