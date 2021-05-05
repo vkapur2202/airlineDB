@@ -6,7 +6,6 @@
   "devDependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "node": "^16.0.0",
     "pg": "^8.6.0",
     "psql": "^0.0.1"
   },
@@ -23,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/vkapur2202/airlineDB/issues"
   },
-  "homepage": "https://github.com/vkapur2202/airlineDB#readme"
+  "homepage": "https://github.com/vkapur2202/airlineDB#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0"
+  }
 }
