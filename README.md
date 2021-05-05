@@ -18,7 +18,9 @@ in order to get your .env file working properly, use the link sent in the slack.
 create a file called .env (perhaps using `touch .env` in your terminal) within the root directory and then add the line of code:
 CONNECTION_STRING = {insert connection link here}
 
-execute `node index.js` to run the main file.
+execute `node seed.js` to reset/seed the database.
+
+alternatively, run `npm run reset-db` to reset/seed the database.
 
 in order to re-initialize the database (if any changes are made to the init_db.sql file), run the folloiwing command in the terminal with the appropriate password.
 
