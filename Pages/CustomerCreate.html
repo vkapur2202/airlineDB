@@ -85,15 +85,15 @@
         <div class="row register-form" align="center">
           <div class="col-md-12">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Email" value="">
+              <input type="text" id = "cCreateEmail" class="form-control" placeholder="Email" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="First Name" value="">
+              <input type="text" id = "cCreateFirstName" class="form-control" placeholder="First Name" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Last Name" value="">
+              <input type="text" id = "cCreateLastName" class="form-control" placeholder="Last Name" value="">
             </div>
             </div>
           </div>
@@ -106,7 +106,7 @@
       <div class = "col-md-5">
       </div>
       <div class = "col-md-2">
-        <input type="submit" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
+        <input onclick = "createCustomer()" type="submit" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
       </div>
       <div class = "col-md-5">
       </div>
@@ -120,3 +120,24 @@
 <!-- Default form contact -->
 </body>
 </html>
+<script>
+  function createCustomer() {
+    // Form fields, see IDs above
+    const params = {
+      cname: document.querySelector('#cCreateEmail').value,
+      username: document.querySelector('#cCreateFirstName').value,
+      password: document.querySelector('#cCreateLastName').value,
+    }
+
+    const http = new XMLHttpRequest()
+    http.open('POST', '/addcustomer')
+    http.setRequestHeader('Content-type', 'application/json')
+    http.send(JSON.stringify(params)) // Make sure to stringify
+    console.log("here")
+    http.onload = function() {
+      // Do whatever with response
+      console.log("Reached here")
+      alert(http.responseText)
+    }
+  }
+</script>
