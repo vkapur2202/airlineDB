@@ -10,6 +10,19 @@
     background: linear-gradient(to right, rgba(49, 76, 140, 1), rgba(74, 123, 161, 1));
   }
 
+  .options-overlay {
+    /* fallback for old browsers */
+    /*background: rgba(49, 76, 140, 0.73);*/
+    background: rgba(37, 57, 104, 0.90);
+  }
+
+  #footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:2em;
+    background: #101010; }
+
 </style>
 
 <html>
@@ -22,6 +35,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 </head>
 <body class = "gradient-custom" align = "center">
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -76,46 +90,68 @@
 <div class="container register">
   <div style = "height: 3em;"></div>
   <div class = "row">
-    <h1 style = "color: white;">Register a New Customer</h1>
+    <h1 style = "color: white;">Flight Detail</h1>
   </div>
   <div style = "height: 2em;"></div>
   <div class="row">
-    <div class = "col-md-4"></div>
-    <div class="col-md-4">
-        <div class="row register-form" align="center">
-          <div class="col-md-12">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Username" value="">
-            </div>
-            <div style = "height: 1em;"></div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="First Name" value="">
-            </div>
-            <div style = "height: 1em;"></div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Last Name" value="">
-            </div>
-            </div>
-          </div>
-        </div>
+    <div class="col-md-12">
+      <div class="col-md-2"></div>
+      <div class="col-md-4 options-overlay" align="left" style = "color: whitesmoke;">
+        <div style = "height: 1em;"></div>
+        <h6>Flight Number: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Departure Airport: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Departure Date/Time: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Arrival Airport: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Arrival Date/Time: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Pilot Name: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>No remaining E. Seats: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>No. remaining B. Seats: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>No. Carry-on Bag Space: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>No. Check-in Bag Space: </h6>
+        <div style = "height: 1em;"></div>
       </div>
-    <div class = "col-md-4"></div>
+      <div class="col-md-4 options-overlay" align="left" style = "color: ghostwhite;">
+        <div style = "height: 1em;"></div>
+        <h6>Input Flight Number</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input Departure Airport</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input Departure Date/Time</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input Arrival Airport</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input Arrival Date/Time</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input Pilot Name</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input No. remaining E. Seats</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input No. remaining B. Seats</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input No. Carry-on Bag Space</h6>
+        <div style = "height: 1em;"></div>
+        <h6>Input No. Check-in Bag Space</h6>
+        <div style = "height: 1em;"></div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
   </div>
-  <div style = "height: 1em;"></div>
-    <div class = "row">
-      <div class = "col-md-5">
-      </div>
-      <div class = "col-md-2">
-        <input type="submit" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
-      </div>
-      <div class = "col-md-5">
-      </div>
-    </div>
   <div style = "height: 2em;"></div>
-    <div class = "row">
-      <h5 style = "color: #0daa0d; visibility: visible;"> You have successfully registered a new Customer</h5>
-    </div>
 </div>
+<footer class="footer" id = "footer">
+  <div class="container">
+    <span class="text-muted" style="color: darkgray;">Want to return to searching for flights? Search for other flights <a href="FlightSearch.html" style="color: whitesmoke;">here</a></span>
+  </div>
+</footer>
 <!-- Default form contact -->
 <!-- Default form contact -->
 </body>

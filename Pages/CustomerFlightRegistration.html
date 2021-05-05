@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 </head>
 <body class = "gradient-custom" align = "center">
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -76,7 +77,7 @@
 <div class="container register">
   <div style = "height: 3em;"></div>
   <div class = "row">
-    <h1 style = "color: white;">Register a New Customer</h1>
+    <h1 style = "color: white;">Add Customer To Flight</h1>
   </div>
   <div style = "height: 2em;"></div>
   <div class="row">
@@ -85,15 +86,29 @@
         <div class="row register-form" align="center">
           <div class="col-md-12">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Username" value="">
+              <input type="text" class="form-control" placeholder="Customer Username" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="First Name" value="">
+              <input type="text" class="form-control" placeholder="Flight ID" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Last Name" value="">
+              <select class="form-control">
+                <option class="hidden" selected="" disabled="">Num Check-in Bags</option>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+            <div style = "height: 1em;"></div>
+            <div class="form-group">
+              <select class="form-control">
+                <option class="hidden" selected="" disabled="">Num Carry-on Bags</option>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+              </select>
             </div>
             </div>
           </div>
