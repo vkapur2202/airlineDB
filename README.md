@@ -22,6 +22,8 @@ execute `node seed.js` to reset/seed the database.
 
 alternatively, run `npm run reset-db` to reset/seed the database.
 
+To run the frontend UI of our application, run `http-server` in the Pages directory (`cd Pages`), and click either of the provided localhosted web-addresses. Then navigate to the desired page.
+
 in order to re-initialize the database (if any changes are made to the init_db.sql file), run the folloiwing command in the terminal with the appropriate password.
 
 psql --host=airline-management-db.cb7isu5t5kyq.us-east-2.rds.amazonaws.com --port=5432 --username postgres --password --dbname=airlinesDB < database/init_db.sql
