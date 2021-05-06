@@ -12,7 +12,8 @@
     "psql": "^0.0.1"
   },
   "scripts": {
-    "reset-db": "node seed.js"
+    "reset-db": "node seed.js",
+    "app": "node index.js"
   },
   "repository": {
     "type": "git",
