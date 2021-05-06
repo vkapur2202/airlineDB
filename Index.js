@@ -9,7 +9,7 @@ const bodyparser = require('body-parser')
 const express = require("express")
 const path = require('path')
 const app = express()
-app.use(express.static('public'));
+app.use(express.static(__dirname + "/public"))
 var PORT = process.env.port || 3000
 
 // View Engine Setup
@@ -35,6 +35,10 @@ app.get("/searchflights", function(req, res){
 app.get("/addcustomer", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/CustomerCreate.html'));
 });
+
+// app.get("/image", function(req, res){
+//     res.sendFile(path.join(__dirname, '/Images/customer.png'));
+// });
 
 app.post("/searchflights", function(req, res){
     //const cid = parseInt(request.params.cid)
