@@ -32,13 +32,27 @@ app.get("/createflight", function(req, res){
 app.get("/searchflights", function(req, res){
     pool.query('SELECT * FROM flight', (error, results) => {
         if (error) {
-            console.log("WHOOPS")
             throw error
         }
         //res.status(200).json(results.rows)
         //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
         //res.render('DynamicFile/FlightSearch');
-        console.log("Finished")
+        res.render('DynamicFile/FlightSearch', {data: results.rows});
+
+    })
+});
+
+app.post("/searchflights/search", function(req, res){
+    console.log(req.body)
+    const { depAirport, arrAirport, depDate, arrDate} = req.body
+    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [arrAirport, depAirport], (error, results) => {
+        if (error) {
+            throw error
+        }
+        //res.status(200).json(results.rows)
+        //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+        //res.render('DynamicFile/FlightSearch');
+        console.log("Finished", results.rows)
         res.render('DynamicFile/FlightSearch', {data: results.rows});
 
     })
@@ -65,13 +79,11 @@ app.post("/searchflights", function(req, res){
     //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
     pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [parseInt(depAirport), parseInt(arrAirport)], (error, results) => {
         if (error) {
-            console.log("WHOOPS")
             throw error
         }
         //res.status(200).json(results.rows)
         //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
         //res.render('DynamicFile/FlightSearch');
-        console.log("Finished")
         res.render('DynamicFile/FlightSearch', {data: results.rows});
 
     })
@@ -123,7 +135,7 @@ app.get("/", function(req, res){
 });
 app.post('/createflight', (req, res) => {
     const { pid, arrivalgate, pilotid, startaid, destinationaid, departuregate} = req.body
-    console.log("fuck this shit");
+    console.log("fuck this ");
     pool.query('INSERT INTO flight (pid, pilotid, startaid, destinationaid, distance, departuregate, arrivalgate) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING fid', [pid, pilotid, startaid, destinationaid, 500, departuregate, arrivalgate], (error, results) => {
         if (error) {
             res.status(403).send(`Error: ${error}`)

@@ -63,8 +63,7 @@
 <div style = "height: 3em;"></div>
 <div class = "row">
     <div class = "col-lg-12" style="color: whitesmoke;">
-        <h1>WTF </h1>
-        <% console.log("SHIT")%>
+        <h1>Search for your flight </h1>
     </div>
 </div>
 <div style = "height: 2em;"></div>
@@ -117,7 +116,7 @@
     <div class = "col-lg-1">
     </div>
 </div>
-<%data.forEach(function(flight) {console.log("got to for loop")%>
+<%data.forEach(function(flight) {%>
 <div class = "row" >
     <div class = "col-lg-1">
     </div>
@@ -153,13 +152,9 @@
 </footer>
 </body>
 </html>
-
 <script>
     function searchFlights() {
-    function searchFlights() {
-        <% data = data.filter(flight => flight.destinationaid = 281); %>
         // Form fields, see IDs above
-        /*
         const params = {
             depAirport: document.querySelector('#depAInput').value,
             arrAirport: document.querySelector('#arrAInput').value,
@@ -168,16 +163,14 @@
         }
 
         const http = new XMLHttpRequest()
-        http.open('POST', '/searchflights')
+        http.open('POST', '/searchflights/search')
         http.setRequestHeader('Content-type', 'application/json')
         http.send(JSON.stringify(params)) // Make sure to stringify
         console.log("here")
         http.onload = function() {
             // Do whatever with response
-            console.log("Reached here")
-            alert(http.responseText)
+            document.write(http.responseText)
         }
-        return false;*/
     }
 </script>
 <style>
