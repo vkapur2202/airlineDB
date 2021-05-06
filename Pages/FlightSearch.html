@@ -192,14 +192,13 @@
         }
 
         const http = new XMLHttpRequest()
-        http.open('POST', '/searchflights')
+        http.open('GET', '/searchflights/search')
         http.setRequestHeader('Content-type', 'application/json')
         http.send(JSON.stringify(params)) // Make sure to stringify
         console.log("here")
         http.onload = function() {
             // Do whatever with response
             document.write(http.responseText)
-            console.log("Reached here")
         }
     }
 </script>
