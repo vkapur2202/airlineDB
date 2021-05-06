@@ -107,7 +107,7 @@ app.get("/addpilot", function(req, res){
 });
 
 app.get("/flightdetail", function(req, res){
-    res.sendFile(path.join(__dirname, '/Pages/FlightDetail.html'));
+    res.sendFile(path.join(__dirname, '/Pages/FlightDetail.ejs'));
 });
 
 app.post('/addpilot', (req, res) => {
@@ -139,7 +139,6 @@ app.get("/", function(req, res){
 });
 app.post('/createflight', (req, res) => {
     const { pid, arrivalgate, pilotid, startaid, destinationaid, departuregate} = req.body
-    console.log("fuck this ");
     pool.query('INSERT INTO flight (pid, pilotid, startaid, destinationaid, distance, departuregate, arrivalgate) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING fid', [pid, pilotid, startaid, destinationaid, 500, departuregate, arrivalgate], (error, results) => {
         if (error) {
             res.status(403).send(`Error: ${error}`)
