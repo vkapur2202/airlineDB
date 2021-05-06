@@ -4,10 +4,11 @@ const connectionString = process.env.CONNECTION_STRING
 const pool = new Pool({
     connectionString,
 })
-
+let ejs = require('ejs');
 const bodyparser = require('body-parser')
 const express = require("express")
 const path = require('path')
+const router = express.Router()
 const app = express()
 app.use(express.static(__dirname + "/public"))
 var PORT = process.env.port || 3000
@@ -15,7 +16,7 @@ var PORT = process.env.port || 3000
 // View Engine Setup
 app.set("views", path.join(__dirname))
 app.set("view engine", "ejs")
-
+//app.engine('html', require('ejs').renderFile)
 // Body-parser middleware
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
@@ -29,31 +30,58 @@ app.get("/createflight", function(req, res){
 });
 
 app.get("/searchflights", function(req, res){
-    res.sendFile(path.join(__dirname, '/Pages/FlightSearch.html'));
+    pool.query('SELECT * FROM flight', (error, results) => {
+        if (error) {
+            console.log("WHOOPS")
+            throw error
+        }
+        //res.status(200).json(results.rows)
+        //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+        //res.render('DynamicFile/FlightSearch');
+        console.log("Finished")
+        res.render('DynamicFile/FlightSearch', {data: results.rows});
+
+    })
 });
 
 app.get("/addcustomer", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/CustomerCreate.html'));
 });
 
+app.get("/searchdynflights", function(req, res){
+    res.render('DynamicFile/FlightSearch');
+});:
+
+
 // app.get("/image", function(req, res){
 //     res.sendFile(path.join(__dirname, '/Images/customer.png'));
 // });
+
 
 app.post("/searchflights", function(req, res){
     //const cid = parseInt(request.params.cid)
 
     const { depAirport, arrAirport, depDate, arrDate} = req.body
-
-    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [depAirport, arrAirport], (error, results) => {
+    //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [parseInt(depAirport), parseInt(arrAirport)], (error, results) => {
         if (error) {
+            console.log("WHOOPS")
             throw error
         }
-        console.log(results)
         //res.status(200).json(results.rows)
-        res.render('DynamicFile/FlightSearch', {data: results})
+        //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+        //res.render('DynamicFile/FlightSearch');
+        console.log("Finished")
+        res.render('DynamicFile/FlightSearch', {data: results.rows});
+
     })
+    //res.render('DynamicFile/FlightSearch', {data: passData});
 });
+
+app.get("/searchflighthopefully", function(req, res){
+    res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+});
+
 app.get("/addcustomeronflight", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
 });
@@ -94,13 +122,15 @@ app.get("/", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/AirlineMainPage.html'));
 });
 app.post('/createflight', (req, res) => {
-    const { pid, arrivalGate, pilotid, startaid, destinationaid, departuregate } = req.body
-
-    pool.query('INSERT INTO flight (pid, pilotid, startaid, destinationaid, distance, departuregate, arrivalgate) VALUES ($1, $3, $4, $5, $7, $6, $2)', [pid, arrivalGate, pilotid, startaid, destinationaid, departuregate, 500], (error, results) => {
+    const { pid, arrivalgate, pilotid, startaid, destinationaid, departuregate} = req.body
+    console.log("fuck this shit");
+    pool.query('INSERT INTO flight (pid, pilotid, startaid, destinationaid, distance, departuregate, arrivalgate) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING fid', [pid, pilotid, startaid, destinationaid, 500, departuregate, arrivalgate], (error, results) => {
         if (error) {
-            throw error
+            res.status(403).send(`Error: ${error}`)
+            return;
         }
-        response.status(201).send(`Flight added with ID: ${result.insertId}`)
+        console.log(results)
+        res.status(201).send(`Flight added with ID: ${results.rows[0].fid}`)
     })
     console.log("Using Body-parser: ", req.body)
 })
