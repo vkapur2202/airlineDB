@@ -59,103 +59,103 @@
         </div>
     </div>
 </nav>
-
-<div style = "height: 3em;"></div>
-<div class = "row">
-    <div class = "col-lg-12" style="color: whitesmoke;">
-        <h1>WTF </h1>
-        <% console.log("SHIT")%>
-    </div>
-</div>
-<div style = "height: 2em;"></div>
-<div class = "row" >
-    <div class = "col" align="center">
-        <form class="form-inline">
-            <div class="form-group mr-2">
-                <label class="sr-only">Departure Airport</label>
-                <input type="text" class="form-control" id="depAInput" placeholder="Departure Airport">
-            </div>
-            <div class="form-group mr-2">
-                <label class="sr-only">Arrival Airport</label>
-                <input type="text" class="form-control" id="arrAInput" placeholder="Arrival Airport">
-            </div>
-            <div class="form-group mr-2">
-                <label class="sr-only">Departure Date</label>
-                <input type="datetime-local" class="form-control" id="depDInput" placeholder="Departure Date">
-            </div>
-            <div class="form-group mr-2">
-                <label class="sr-only">Arrival Date</label>
-                <input type="datetime-local" class="form-control" id="arrDInput" placeholder="Arrival Date">
-            </div>
-            <button onclick = "return searchFlights()" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-</div>
-<div style = "height: 5em;"></div>
-<div class = "row">
-    <div class = "col-lg-1">
-    </div>
-    <div class = "col-lg-10 options-overlay" style = "height: 4rem;">
-        <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-            <h6>Flight Number</h6>
+<div class = "entirecontainer">
+    <div style = "height: 3em;"></div>
+    <div class = "row">
+        <div class = "col-lg-12" style="color: whitesmoke;">
+            <h1>WTF </h1>
+            <% console.log("SHIT")%>
         </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-            <h6>Departure Airport</h6>
-        </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-            <h6>Departure Time</h6>
-        </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-            <h6>Arrival Airport</h6>
-        </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-            <h6>Arrival Time</h6>
-        </div>
-        <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
     </div>
-    <div class = "col-lg-1">
+    <div style = "height: 2em;"></div>
+    <div class = "row" >
+        <div class = "col" align="center">
+            <form class="form-inline">
+                <div class="form-group mr-2">
+                    <label class="sr-only">Departure Airport</label>
+                    <input type="text" class="form-control" id="depAInput" placeholder="Departure Airport">
+                </div>
+                <div class="form-group mr-2">
+                    <label class="sr-only">Arrival Airport</label>
+                    <input type="text" class="form-control" id="arrAInput" placeholder="Arrival Airport">
+                </div>
+                <div class="form-group mr-2">
+                    <label class="sr-only">Departure Date</label>
+                    <input type="datetime-local" class="form-control" id="depDInput" placeholder="Departure Date">
+                </div>
+                <div class="form-group mr-2">
+                    <label class="sr-only">Arrival Date</label>
+                    <input type="datetime-local" class="form-control" id="arrDInput" placeholder="Arrival Date">
+                </div>
+                <button onclick = "return searchFlights()" class="btn btn-primary">Search</button>
+            </form>
+        </div>
     </div>
-</div>
-<%data.forEach(function(flight) {console.log("got to for loop")%>
-<div class = "row" >
-    <div class = "col-lg-1">
-    </div>
-    <div class = "col-lg-10 options-mini-1">
-        <a href = "./FlightDetail.html">
+    <div style = "height: 5em;"></div>
+    <div class = "row">
+        <div class = "col-lg-1">
+        </div>
+        <div class = "col-lg-10 options-overlay" style = "height: 4rem;">
             <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p><%= flight.fid %></p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Flight Number</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p><%= flight.startaid %></p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Departure Airport</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>test</p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Departure Time</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p><%= flight.destinationaid %></p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Arrival Airport</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>test</p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Arrival Time</h6>
             </div>
             <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-        </a>
+        </div>
+        <div class = "col-lg-1">
+        </div>
     </div>
-    <div class = "col-lg-1">
+    <%data.forEach(function(flight) {%>
+    <div class = "row" >
+        <div class = "col-lg-1">
+        </div>
+        <div class = "col-lg-10 options-mini-1">
+            <a href = "./FlightDetail.html">
+                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p><%= flight.fid %></p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p><%= flight.startaid %></p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p>test</p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p><%= flight.destinationaid %></p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p>test</p>
+                </div>
+                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+            </a>
+        </div>
+        <div class = "col-lg-1">
+        </div>
     </div>
+    <% }); %>
+    <footer class="footer" id = "footer">
+        <div class="container">
+            <span class="text-muted" style="color: darkgray;">Couldn't find the flight you were looking for? Register a flight <a href="../Pages/FlightCreate.html" style="color: whitesmoke;">here</a></span>
+        </div>
+    </footer>
 </div>
-<% }); %>
-<footer class="footer" id = "footer">
-    <div class="container">
-        <span class="text-muted" style="color: darkgray;">Couldn't find the flight you were looking for? Register a flight <a href="../Pages/FlightCreate.html" style="color: whitesmoke;">here</a></span>
-    </div>
-</footer>
 </body>
 </html>
 
 <script>
-    function searchFlights() {
     function searchFlights() {
         <% data = data.filter(flight => flight.destinationaid = 281); %>
         // Form fields, see IDs above
@@ -223,4 +223,23 @@
         height:2em;
         background: #101010; }
 
+    * {
+        box-sizing: border-box;
+    }
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+    html,
+    body {
+        height: 100%;
+        position: relative;
+    }
+    .entirecontainer {
+        min-height: 100vh; /* will cover the 100% of viewport */
+        overflow: hidden;
+        display: block;
+        position: relative;
+        padding-bottom: 100px; /* height of your footer */
+    }
 </style>

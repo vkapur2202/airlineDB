@@ -53,9 +53,9 @@ app.get("/searchdynflights", function(req, res){
 });
 
 
-// app.get("/image", function(req, res){
-//     res.sendFile(path.join(__dirname, '/Images/customer.png'));
-// });
+app.get("/image", function(req, res){
+    res.sendFile(path.join(__dirname, '/Images/customer.png'));
+});
 
 
 app.post("/searchflights", function(req, res){
