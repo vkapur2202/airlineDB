@@ -39,8 +39,8 @@
                         Flights
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="FlightSearch.html">Search Flights</a>
-                        <a class="dropdown-item" href="FlightCreate.html">Register Flight</a>
+                        <a class="dropdown-item" href="./searchflights">Search Flights</a>
+                        <a class="dropdown-item" href="./createflight">Register Flight</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -48,8 +48,8 @@
                         Customers
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="CustomerCreate.html">Register New Customer</a>
-                        <a class="dropdown-item" href="CustomerFlightRegistration.html">Add Customer to Flight</a>
+                        <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
+                        <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -57,7 +57,7 @@
                         Pilots
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="PilotCreate.html">Register Pilot</a>
+                        <a class="dropdown-item" href="./addpilot">Register Pilot</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -65,7 +65,7 @@
                         Airports
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="AirportCreate.html">Register Airport</a>
+                        <a class="dropdown-item" href="./addairport">Register Airport</a>
                     </div>
                 </li>
             </ul>
@@ -85,15 +85,15 @@
             <div class="row register-form" align="center">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Airport Name" value="">
+                        <input type="text" id = "aCreateName" class="form-control" placeholder="Airport Name" value="">
                     </div>
                     <div style = "height: 1em;"></div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="City" value="">
+                        <input type="text" id = "aCreateCity" class="form-control" placeholder="City" value="">
                     </div>
                     <div style = "height: 1em;"></div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Country" value="">
+                        <input type="text" id = "aCreateNumGates" class="form-control" placeholder="Country" value="">
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
     <div class = "col-md-5">
     </div>
     <div class = "col-md-2">
-        <input type="submit" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
+        <input type="submit" onclick = "return createAirport()" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
     </div>
     <div class = "col-md-5">
     </div>
@@ -120,3 +120,25 @@
 <!-- Default form contact -->
 </body>
 </html>
+
+<script>
+    function createAirport() {
+        // Form fields, see IDs above
+        const params = {
+            aname: document.querySelector('#aCreateName').value,
+            city: document.querySelector('#aCreateCity').value,
+            numgates: document.querySelector('#aCreateNumGates').value,
+        }
+
+        const http = new XMLHttpRequest()
+        http.open('POST', '/addairport')
+        http.setRequestHeader('Content-type', 'application/json')
+        http.send(JSON.stringify(params)) // Make sure to stringify
+        console.log("here")
+        http.onload = function() {
+            // Do whatever with response
+            console.log("Reached here")
+            alert(http.responseText)
+        }
+    }
+</script>

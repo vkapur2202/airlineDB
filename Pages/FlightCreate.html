@@ -31,7 +31,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- <a href="./AirlineMainPage.html" class="pull-left"><img src="../Images/logo_resized.png"></a>!-->
+      <a href="./AirlineMainPage.html" class="pull-left"><img src="../Images/logo_resized.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -40,8 +40,8 @@
             Flights
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="FlightSearch.html">Search Flights</a>
-            <a class="dropdown-item" href="FlightCreate.html">Register Flight</a>
+            <a class="dropdown-item" href="./searchflights">Search Flights</a>
+            <a class="dropdown-item" href="./createflight">Register Flight</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -49,8 +49,8 @@
             Customers
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="CustomerCreate.html">Register New Customer</a>
-            <a class="dropdown-item" href="CustomerFlightRegistration.html">Add Customer to Flight</a>
+            <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
+            <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -58,7 +58,7 @@
             Pilots
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="PilotCreate.html">Register Pilot</a>
+            <a class="dropdown-item" href="./addpilot">Register Pilot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -66,7 +66,7 @@
             Airports
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="AirportCreate.html">Register Airport</a>
+            <a class="dropdown-item" href="./addairport">Register Airport</a>
           </div>
         </li>
       </ul>
@@ -143,7 +143,7 @@
       <div class = "col-md-4">
       </div>
       <div class = "col-md-4">
-        <input type="submit" onclick = "return login()" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
+        <input type="submit" onclick = "return createFlight()" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
       </div>
       <div class = "col-md-4">
       </div>
@@ -159,7 +159,7 @@
 </html>
 
 <script>
-  function login() {
+  function createFlight() {
     // Form fields, see IDs above
     const params = {
       pid: document.querySelector('#fCreateAirplane').value,
@@ -171,7 +171,7 @@
     }
 
     const http = new XMLHttpRequest()
-    http.open('POST', '/')
+    http.open('POST', '/createflight')
     http.setRequestHeader('Content-type', 'application/json')
     http.send(JSON.stringify(params)) // Make sure to stringify
     console.log("here")

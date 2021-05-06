@@ -71,8 +71,8 @@
                         Flights
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="FlightSearch.html">Search Flights</a>
-                        <a class="dropdown-item" href="FlightCreate.html">Register Flight</a>
+                        <a class="dropdown-item" href="./searchflights">Search Flights</a>
+                        <a class="dropdown-item" href="./createflight">Register Flight</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -80,8 +80,8 @@
                         Customers
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="CustomerCreate.html">Register New Customer</a>
-                        <a class="dropdown-item" href="CustomerFlightRegistration.html">Add Customer to Flight</a>
+                        <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
+                        <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -89,7 +89,7 @@
                         Pilots
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="PilotCreate.html">Register Pilot</a>
+                        <a class="dropdown-item" href="./addpilot">Register Pilot</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -97,7 +97,7 @@
                         Airports
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="AirportCreate.html">Register Airport</a>
+                        <a class="dropdown-item" href="./addairport">Register Airport</a>
                     </div>
                 </li>
             </ul>
@@ -116,22 +116,22 @@
         <div class = "col" align="center">
             <form class="form-inline">
                 <div class="form-group mr-2">
-                    <label class="sr-only" for="inputEmail">Departure Airport</label>
-                    <input type="email" class="form-control" id="depAInput" placeholder="Departure Airport">
+                    <label class="sr-only">Departure Airport</label>
+                    <input type="text" class="form-control" id="depAInput" placeholder="Departure Airport">
                 </div>
                 <div class="form-group mr-2">
-                    <label class="sr-only" for="inputPassword">Arrival Airport</label>
-                    <input type="password" class="form-control" id="arrAInput" placeholder="Arrival Airport">
+                    <label class="sr-only">Arrival Airport</label>
+                    <input type="text" class="form-control" id="arrAInput" placeholder="Arrival Airport">
                 </div>
                 <div class="form-group mr-2">
-                    <label class="sr-only" for="inputEmail">Departure Date</label>
+                    <label class="sr-only">Departure Date</label>
                     <input type="datetime-local" class="form-control" id="depDInput" placeholder="Departure Date">
                 </div>
                 <div class="form-group mr-2">
-                    <label class="sr-only" for="inputPassword">Arrival Date</label>
+                    <label class="sr-only">Arrival Date</label>
                     <input type="datetime-local" class="form-control" id="arrDInput" placeholder="Arrival Date">
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" onclick = "return searchFlights()" class="btn btn-primary">Search</button>
             </form>
         </div>
     </div>
@@ -161,88 +161,6 @@
         <div class = "col-lg-1">
         </div>
     </div>
-    <div class = "row" >
-        <div class = "col-lg-1">
-        </div>
-        <div class = "col-lg-10 options-mini-1">
-            <a href = "./FlightDetail.html">
-                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Flight Number</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Departure Airport</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Departure Time</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Arrival Airport</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Arrival Time</p>
-                </div>
-                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-            </a>
-        </div>
-        <div class = "col-lg-1">
-        </div>
-    </div>
-
-    <div class = "row" >
-        <div class = "col-lg-1">
-        </div>
-        <div class = "col-lg-10 options-mini-2">
-            <a href = "./FlightDetail.html">
-                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Flight Number</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Departure Airport</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Departure Time</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Arrival Airport</p>
-                </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                    <p>Arrival Time</p>
-                </div>
-                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-            </a>
-        </div>
-        <div class = "col-lg-1">
-        </div>
-    </div>
-
-    <div class = "row" >
-    <div class = "col-lg-1">
-    </div>
-    <div class = "col-lg-10 options-mini-1">
-        <a href = "./FlightDetail.html">
-            <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>Flight Number</p>
-            </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>Departure Airport</p>
-            </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>Departure Time</p>
-            </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>Arrival Airport</p>
-            </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>Arrival Time</p>
-            </div>
-            <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-        </a>
-    </div>
-    <div class = "col-lg-1">
-    </div>
 </div>
     <footer class="footer" id = "footer">
         <div class="container">
@@ -251,6 +169,26 @@
     </footer>
 </body>
 </html>
-<script>
 
+<script>
+    function searchFlights() {
+        // Form fields, see IDs above
+        const params = {
+            depAirport: document.querySelector('#depAInput').value,
+            arrAirport: document.querySelector('#arrAInput').value,
+            depDate: document.querySelector('#depDInput').value,
+            arrDate: document.querySelector('#arrDInput').value
+        }
+
+        const http = new XMLHttpRequest()
+        http.open('POST', '/searchflights')
+        http.setRequestHeader('Content-type', 'application/json')
+        http.send(JSON.stringify(params)) // Make sure to stringify
+        console.log("here")
+        http.onload = function() {
+            // Do whatever with response
+            console.log("Reached here")
+            alert(http.responseText)
+        }
+    }
 </script>

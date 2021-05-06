@@ -40,8 +40,8 @@
             Flights
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="FlightSearch.html">Search Flights</a>
-            <a class="dropdown-item" href="FlightCreate.html">Register Flight</a>
+            <a class="dropdown-item" href="./searchflights">Search Flights</a>
+            <a class="dropdown-item" href="./createflight">Register Flight</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -49,8 +49,8 @@
             Customers
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="CustomerCreate.html">Register New Customer</a>
-            <a class="dropdown-item" href="CustomerFlightRegistration.html">Add Customer to Flight</a>
+            <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
+            <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -58,7 +58,7 @@
             Pilots
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="PilotCreate.html">Register Pilot</a>
+            <a class="dropdown-item" href="./addpilot">Register Pilot</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -66,7 +66,7 @@
             Airports
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="AirportCreate.html">Register Airport</a>
+            <a class="dropdown-item" href="./addairport">Register Airport</a>
           </div>
         </li>
       </ul>
@@ -86,15 +86,15 @@
       <div class="row register-form" align="center">
         <div class="col-md-12">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" value="">
+            <input type="text" id = "pCreateUsername" class="form-control" placeholder="Username" value="">
           </div>
           <div style = "height: 1em;"></div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="First Name" value="">
+            <input id = "pCreateFirstName" type="text" class="form-control" placeholder="First Name" value="">
           </div>
           <div style = "height: 1em;"></div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Last Name" value="">
+            <input id = "pCreateLastName" type="text" class="form-control" placeholder="Last Name" value="">
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@
   <div class = "col-md-5">
   </div>
   <div class = "col-md-2">
-    <input type="submit" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
+    <input onclick = "return createPilot()" type="submit" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
   </div>
   <div class = "col-md-5">
   </div>
@@ -121,3 +121,23 @@
 <!-- Default form contact -->
 </body>
 </html>
+
+<script>
+  function createPilot() {
+    // Form fields, see IDs above
+    const params = {
+      pname: document.querySelector('#pCreateFirstName').value,
+    }
+
+    const http = new XMLHttpRequest()
+    http.open('POST', '/addpilot')
+    http.setRequestHeader('Content-type', 'application/json')
+    http.send(JSON.stringify(params)) // Make sure to stringify
+    console.log("here")
+    http.onload = function() {
+      // Do whatever with response
+      console.log("Reached here")
+      alert(http.responseText)
+    }
+  }
+</script>
