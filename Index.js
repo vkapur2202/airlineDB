@@ -67,9 +67,9 @@ app.get("/searchdynflights", function(req, res){
 });
 
 
-// app.get("/image", function(req, res){
-//     res.sendFile(path.join(__dirname, '/Images/customer.png'));
-// });
+app.get("/image", function(req, res){
+    res.sendFile(path.join(__dirname, '/Images/customer.png'));
+});
 
 
 app.post("/searchflights", function(req, res){
@@ -104,6 +104,10 @@ app.get("/addairport", function(req, res){
 
 app.get("/addpilot", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/PilotCreate.html'));
+});
+
+app.get("/flightdetail", function(req, res){
+    res.sendFile(path.join(__dirname, '/Pages/FlightDetail.html'));
 });
 
 app.post('/addpilot', (req, res) => {

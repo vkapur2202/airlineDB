@@ -104,56 +104,81 @@
         </div>
         <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
             <h6>Departure Time</h6>
+
         </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-            <h6>Arrival Airport</h6>
-        </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-            <h6>Arrival Time</h6>
-        </div>
-        <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-    </div>
-    <div class = "col-lg-1">
     </div>
 </div>
 <%data.forEach(function(flight) {%>
 <div class = "row" >
     <div class = "col-lg-1">
+
     </div>
-    <div class = "col-lg-10 options-mini-1">
-        <a href = "./FlightDetail.html">
+    <div style = "height: 5em;"></div>
+    <div class = "row">
+        <div class = "col-lg-1">
+        </div>
+        <div class = "col-lg-10 options-overlay" style = "height: 4rem;">
             <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p><%= flight.fid %></p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Flight Number</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p><%= flight.startaid %></p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Departure Airport</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>test</p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Departure Time</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p><%= flight.destinationaid %></p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Arrival Airport</h6>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>test</p>
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+                <h6>Arrival Time</h6>
             </div>
             <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
-        </a>
+        </div>
+        <div class = "col-lg-1">
+        </div>
     </div>
-    <div class = "col-lg-1">
+    <%data.forEach(function(flight) {%>
+    <div class = "row" >
+        <div class = "col-lg-1">
+        </div>
+        <div class = "col-lg-10 options-mini-1">
+            <a href = "./flightdetail">
+                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p><%= flight.fid %></p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p><%= flight.startaid %></p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p>test</p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p><%= flight.destinationaid %></p>
+                </div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+                    <p>test</p>
+                </div>
+                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+            </a>
+        </div>
+        <div class = "col-lg-1">
+        </div>
     </div>
+    <% }); %>
+    <footer class="footer" id = "footer">
+        <div class="container">
+            <span class="text-muted" style="color: darkgray;">Couldn't find the flight you were looking for? Register a flight <a href="../Pages/FlightCreate.html" style="color: whitesmoke;">here</a></span>
+        </div>
+    </footer>
 </div>
-<% }); %>
-<footer class="footer" id = "footer">
-    <div class="container">
-        <span class="text-muted" style="color: darkgray;">Couldn't find the flight you were looking for? Register a flight <a href="../Pages/FlightCreate.html" style="color: whitesmoke;">here</a></span>
-    </div>
-</footer>
 </body>
 </html>
 <script>
     function searchFlights() {
+
         // Form fields, see IDs above
         const params = {
             depAirport: document.querySelector('#depAInput').value,
@@ -216,4 +241,23 @@
         height:2em;
         background: #101010; }
 
+    * {
+        box-sizing: border-box;
+    }
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+    html,
+    body {
+        height: 100%;
+        position: relative;
+    }
+    .entirecontainer {
+        min-height: 100vh; /* will cover the 100% of viewport */
+        overflow: hidden;
+        display: block;
+        position: relative;
+        padding-bottom: 100px; /* height of your footer */
+    }
 </style>
