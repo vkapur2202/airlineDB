@@ -94,6 +94,10 @@ app.get("/addpilot", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/PilotCreate.html'));
 });
 
+app.get("/flightdetail", function(req, res){
+    res.sendFile(path.join(__dirname, '/Pages/FlightDetail.html'));
+});
+
 app.post('/addpilot', (req, res) => {
     const { pname} = req.body
 
