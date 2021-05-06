@@ -50,7 +50,7 @@ app.get("/addcustomer", function(req, res){
 
 app.get("/searchdynflights", function(req, res){
     res.render('DynamicFile/FlightSearch');
-});:
+});
 
 
 // app.get("/image", function(req, res){
