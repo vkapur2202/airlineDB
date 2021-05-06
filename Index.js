@@ -72,22 +72,8 @@ app.get("/image", function(req, res){
 });
 
 
-app.post("/searchflights", function(req, res){
-    //const cid = parseInt(request.params.cid)
-
-    const { depAirport, arrAirport, depDate, arrDate} = req.body
-    //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
-    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [parseInt(depAirport), parseInt(arrAirport)], (error, results) => {
-        if (error) {
-            throw error
-        }
-        //res.status(200).json(results.rows)
-        //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
-        //res.render('DynamicFile/FlightSearch');
-        res.render('DynamicFile/FlightSearch', {data: results.rows});
-
-    })
-    //res.render('DynamicFile/FlightSearch', {data: passData});
+app.get("/flightdetail", function(req, res){
+        res.render('Pages/FlightDetail');
 });
 
 app.get("/searchflighthopefully", function(req, res){
@@ -106,8 +92,22 @@ app.get("/addpilot", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/PilotCreate.html'));
 });
 
-app.get("/flightdetail", function(req, res){
-    res.sendFile(path.join(__dirname, '/Pages/FlightDetail.ejs'));
+app.post("/flightdetail", function(req, res){
+    //const cid = parseInt(request.params.cid)
+
+    //const { depAirport, arrAirport, depDate, arrDate} = req.body
+    //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+    //pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [parseInt(depAirport), parseInt(arrAirport)], (error, results) => {
+      //  if (error) {
+        //    throw error
+        //}
+        //res.status(200).json(results.rows)
+        //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+        //res.render('DynamicFile/FlightSearch');
+        res.render('Pages/FlightDetail', {data: results.rows});
+
+    //})
+    //res.render('DynamicFile/FlightSearch', {data: passData});
 });
 
 app.post('/addpilot', (req, res) => {
