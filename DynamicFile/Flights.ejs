@@ -209,7 +209,7 @@
     arrAirport: document.querySelector('#arrAInput').value,
     depDate: document.querySelector('#depDInput').value,
     arrDate: document.querySelector('#arrDInput').value
-}
+    }
 
     const http = new XMLHttpRequest()
     http.open('POST', '/searchflights')
@@ -217,9 +217,9 @@
     http.send(JSON.stringify(params)) // Make sure to stringify
     console.log("here")
     http.onload = function() {
-    // Do whatever with response
-    console.log("Reached here")
-    alert(http.responseText)
-}
+        // Do whatever with response
+        console.log("Reached here")
+        alert(http.responseText)
+    }
 }
 </script>

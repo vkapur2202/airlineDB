@@ -42,6 +42,23 @@ app.get("/searchflights", function(req, res){
     })
 });
 
+app.delete('/searchflightdetail', (req, res) => {
+    const { detailfid } = req.body
+
+    pool.query('DELETE FROM trip WHERE fid = $1', [detailfid], (error, results) => {
+        if (error) {
+            throw error
+        }
+        pool.query('DELETE FROM flight WHERE fid = $1', [detailfid], (error, results) => {
+            if (error) {
+                throw error
+            }
+            console.log("PLEASE WORK")
+            res.status(201).send(`Flight successfully deleted`)
+        })
+    })
+})
+
 app.get("/searchairports", function(req, res){
     pool.query('SELECT * FROM airport', (error, results) => {
         if (error) {
@@ -58,7 +75,8 @@ app.get("/searchairports", function(req, res){
 app.post("/searchflights/search", function(req, res){
     console.log(req.body)
     const { depAirport, arrAirport, depDate, arrDate} = req.body
-    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [arrAirport, depAirport], (error, results) => {
+    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2 AND departureDate > $3 AND departureDate < $4',
+        [arrAirport, depAirport, depDate, arrDate], (error, results) => {
         if (error) {
             throw error
         }
@@ -88,7 +106,7 @@ app.post("/searchflightdetail", function(req, res){
 app.post("/searchairports/search", function(req, res){
     console.log(req.body)
     const { name, city, country} = req.body
-    pool.query("SELECT * FROM airport WHERE aname = 'JFK' AND city = 'New York'", (error, results) => {
+    pool.query("SELECT * FROM airport WHERE aname = $1 AND city = $2 AND country = $3", [name, city, country],(error, results) => {
         if (error) {
             throw error
         }
@@ -157,8 +175,8 @@ app.get("/", function(req, res){
     res.sendFile(path.join(__dirname, '/Pages/AirlineMainPage.html'));
 });
 app.post('/createflight', (req, res) => {
-    const { pid, arrivalgate, pilotid, startaid, destinationaid, departuregate} = req.body
-    pool.query('INSERT INTO flight (pid, pilotid, startaid, destinationaid, distance, departuregate, arrivalgate) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING fid', [pid, pilotid, startaid, destinationaid, 500, departuregate, arrivalgate], (error, results) => {
+    const { pid, pilotid, startaid, destinationaid, departuregate, arrivalgate, departuredate, arrivaldate} = req.body
+    pool.query('INSERT INTO flight (pid, pilotid, startaid, destinationaid, departuregate, arrivalgate, departuredate, arrivaldate) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING fid', [pid, pilotid, startaid, destinationaid, departuregate, arrivalgate, departuredate, arrivaldate], (error, results) => {
         if (error) {
             res.status(403).send(`Error: ${error}`)
             return;
