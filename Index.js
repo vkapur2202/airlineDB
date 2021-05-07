@@ -58,12 +58,25 @@ app.post("/searchflights/search", function(req, res){
     })
 });
 
-app.get("/addcustomer", function(req, res){
-    res.sendFile(path.join(__dirname, '/Pages/CustomerCreate.html'));
+app.post("/searchflightdetail", function(req, res){
+    console.log(req.body)
+    const { detailfid } = req.body
+    console.log(detailfid + " !!! ")
+    pool.query('SELECT * FROM flight WHERE fid = $1', [detailfid], (error, results) => {
+        if (error) {
+            throw error
+        }
+        //res.status(200).json(results.rows)
+        //res.sendFile(path.join(__dirname, '/Pages/CustomerFlightRegistration.html'));
+        //res.render('DynamicFile/FlightSearch');
+        console.log("Finished", results.rows)
+        res.render('DynamicFile/FlightDetail', {data: results.rows[0]});
+
+    })
 });
 
-app.get("/searchdynflights", function(req, res){
-    res.render('DynamicFile/FlightSearch');
+app.get("/addcustomer", function(req, res){
+    res.sendFile(path.join(__dirname, '/Pages/CustomerCreate.html'));
 });
 
 
