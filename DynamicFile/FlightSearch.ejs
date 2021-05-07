@@ -161,7 +161,6 @@
             depDate: document.querySelector('#depDInput').value,
             arrDate: document.querySelector('#arrDInput').value
         }
-
         const http = new XMLHttpRequest()
         http.open('POST', '/searchflights/search')
         http.setRequestHeader('Content-type', 'application/json')

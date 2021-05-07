@@ -42,10 +42,27 @@ app.get("/searchflights", function(req, res){
     })
 });
 
+app.delete('/searchflightdetail', (req, res) => {
+    const { detailfid } = req.body
+
+    pool.query('DELETE FROM trip WHERE fid = $1', [detailfid], (error, results) => {
+        if (error) {
+            throw error
+        }
+        pool.query('DELETE FROM flight WHERE fid = $1', [detailfid], (error, results) => {
+            if (error) {
+                throw error
+            }
+            console.log("PLEASE WORK")
+            res.status(201).send(`Flight successfully deleted`)
+        })
+    })
+})
+
 app.post("/searchflights/search", function(req, res){
     console.log(req.body)
     const { depAirport, arrAirport, depDate, arrDate} = req.body
-    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2', [arrAirport, depAirport], (error, results) => {
+    pool.query('SELECT * FROM flight WHERE startaid = $1 AND destinationaid = $2 AND departureDate > $3 AND departureDate < $4', [arrAirport, depAirport, depDate, arrDate], (error, results) => {
         if (error) {
             throw error
         }
