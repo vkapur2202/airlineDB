@@ -11,7 +11,7 @@ const path = require('path')
 const router = express.Router()
 const app = express()
 app.use(express.static(__dirname + "/public"))
-var PORT = process.env.port || 3000
+var PORT = process.env.PORT || 3000
 
 // View Engine Setup
 app.set("views", path.join(__dirname))
@@ -380,5 +380,5 @@ app.post('/addcustomer', (req, res) => {
 
 app.listen(PORT, function(error){
     if (error) throw error
-    console.log("Server created Successfully on PORT", PORT)
+    console.log(`Server is running on http://localhost:${PORT} 🚀`)
 })
