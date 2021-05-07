@@ -127,7 +127,9 @@
   function createPilot() {
     // Form fields, see IDs above
     const params = {
-      pname: document.querySelector('#pCreateFirstName').value,
+      pfname: document.querySelector('#pCreateFirstName').value,
+      plname: document.querySelector('#pCreateLastName').value,
+      puname: document.querySelector('#pCreateUserName').value,
     }
 
     const http = new XMLHttpRequest()
@@ -142,3 +144,4 @@
     }
   }
 </script>
+

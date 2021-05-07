@@ -130,9 +130,9 @@ app.get("/addpilot", function(req, res){
 
 
 app.post('/addpilot', (req, res) => {
-    const { pname} = req.body
+    const { pfname, plname, puname} = req.body
 
-    pool.query('INSERT INTO pilot (pname) VALUES ($1) RETURNING pilotid', [pname], (error, results) => {
+    pool.query('INSERT INTO pilot (firstname, lastname, username) VALUES ($1, $2, $3) RETURNING pilotid', [pfname, plname, puname], (error, results) => {
         if (error) {
             throw error
         }
@@ -170,9 +170,9 @@ app.post('/createflight', (req, res) => {
 })
 
 app.post('/addcustomer', (req, res) => {
-    const { cname, username, password } = req.body
+    const { cuname, cfname, clname } = req.body
 
-    pool.query('INSERT INTO passenger (cname, username, password) VALUES ($1, $2, $3) RETURNING cid', [cname, username, password], (error, results) => {
+    pool.query('INSERT INTO passenger (username, firstname, lastname) VALUES ($1, $2, $3) RETURNING cid', [cuname, cfname, clname], (error, results) => {
         if (error) {
             throw error
         }
