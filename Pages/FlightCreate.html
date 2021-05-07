@@ -86,15 +86,15 @@
         <div class="row register-form">
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" class="form-control" id = "fCreateArrAirport" placeholder="Arrival Airport" value="">
+              <input type="text" class="form-control" id = "arriveaid" placeholder="Arrival Airport" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" class="form-control" id = "fCreateArrGate" placeholder="Arrival Gate" value="">
+              <input type="text" class="form-control" id = "arrivalgate" placeholder="Arrival Gate" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" id = "fCreatePilot" minlength="0" maxlength="4" class="form-control" placeholder="Pilot" value="">
+              <input type="text" id = "pilotid" minlength="0" maxlength="4" class="form-control" placeholder="Pilot" value="">
               <!--
               <select class="form-control">
                 <option class="hidden" id = "fCreatePilot" selected="" disabled="">Pilot</option>
@@ -107,20 +107,20 @@
             <div style = "height: 1em;"></div>
             <div class="form-group">
               <p style = "color: white;">Arrival Time:</p>
-              <input type="datetime-local" id = "fCreateArrTime" class="form-control" placeholder="Arrival Time" value="">
+              <input type="datetime-local" id = "arrivaldate" class="form-control" placeholder="Arrival Time" value="">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="email" id = "fCreateDepAirport" class="form-control" placeholder="Departure Airport" value="">
+              <input type="email" id = "startaid" class="form-control" placeholder="Departure Airport" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" id = "fCreateDepGate" minlength="0" maxlength="4" class="form-control" placeholder="Departure Gate" value="">
+              <input type="text" id = "departuregate" minlength="0" maxlength="4" class="form-control" placeholder="Departure Gate" value="">
             </div>
             <div style = "height: 1em;"></div>
             <div class="form-group">
-              <input type="text" id = "fCreateAirplane" minlength="0" maxlength="4" class="form-control" placeholder="Airplane" value="">
+              <input type="text" id = "pid" minlength="0" maxlength="4" class="form-control" placeholder="Airplane ID" value="">
               <!--
               <select class="form-control">
                 <option class="hidden" id = "fCreateAirplane" selected="" disabled="">Airplane</option>
@@ -133,7 +133,7 @@
             <div style = "height: 1em;"></div>
             <div class="form-group">
               <p style = "color: white;">Departure Time:</p>
-              <input type="datetime-local" id = "fCreateDepTime" class="form-control" placeholder="Departure Time" value="">
+              <input type="datetime-local" id = "departuredate" class="form-control" placeholder="Departure Time" value="">
             </div>
           </div>
         </div>
@@ -163,12 +163,14 @@
   function createFlight() {
     // Form fields, see IDs above
     const params = {
-      pid: document.querySelector('#fCreateAirplane').value,
-      arrivalgate: document.querySelector('#fCreateArrGate').value,
-      pilotid: document.querySelector('#fCreatePilot').value,
-      startaid: document.querySelector('#fCreateDepAirport').value,
-      destinationaid: document.querySelector('#fCreateArrAirport').value,
-      departuregate: document.querySelector('#fCreateDepGate').value
+      pid: document.querySelector('#pid').value,
+      pilotid: document.querySelector('#pilotid').value,
+      startaid: document.querySelector('#startaid').value,
+      destinationaid: document.querySelector('#arriveaid').value,
+      departuregate: document.querySelector('#departuregate').value,
+      arrivalgate: document.querySelector('#departuregate').value,
+      departuredate: document.querySelector('#departuredate').value,
+      arrivaldate: document.querySelector('#arrivaldate').value,
     }
 
     const http = new XMLHttpRequest()
