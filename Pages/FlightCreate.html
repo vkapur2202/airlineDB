@@ -51,6 +51,8 @@
           <div class="dropdown-menu">
             <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
             <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
+            <a class="dropdown-item" href="./searchtrips">Search Customer Trips</a>
+            <a class="dropdown-item" href="./searchcustomers">Search Customers</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -58,6 +60,7 @@
             Pilots
           </a>
           <div class="dropdown-menu">
+            <a class="dropdown-item" href="./searchpilots">Search Pilot</a>
             <a class="dropdown-item" href="./addpilot">Register Pilot</a>
           </div>
         </li>
@@ -151,7 +154,6 @@
     </div>
   <div style = "height: 1em;"></div>
     <div class = "row">
-      <h5 style = "color: #0daa0d; visibility: visible;"> You have successfully registered a flight</h5>
     </div>
 </div>
 <!-- Default form contact -->
@@ -168,7 +170,7 @@
       startaid: document.querySelector('#startaid').value,
       destinationaid: document.querySelector('#arriveaid').value,
       departuregate: document.querySelector('#departuregate').value,
-      arrivalgate: document.querySelector('#departuregate').value,
+      arrivalgate: document.querySelector('#arrivalgate').value,
       departuredate: document.querySelector('#departuredate').value,
       arrivaldate: document.querySelector('#arrivaldate').value,
     }

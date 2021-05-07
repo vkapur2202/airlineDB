@@ -11,9 +11,11 @@
     }
 
     .card-background {
-        background: rgba(49, 75, 140,0.8);
+        background: rgba(49, 75, 140,0.5);
     }
-
+    #section1 {padding-top:50px;height:100%; z-index: 0; background-image: url("https://th.bing.com/th/id/R00cfa2068672e3bfb795791dcd7f1671?rik=1Y8WXF69KAgclQ&riu=http%3a%2f%2fpictures.4ever.eu%2fdata%2fdownload%2faviation%2fairport%2c-night-227786.jpg%3fno-logo&ehk=qK27dTxVB1NXI4nenxE%2bCSxfK5JfAiFwavJT7e5PKsw%3d&risl=&pid=ImgRaw"); width: 100%; padding: 0 !important; margin: 0 auto !important; background-size: cover; overflow: hidden;}
+/*https://ommcom.s3.ap-south-1.amazonaws.com/wp-content/uploads/2020/08/08181235/5d870d8ba335e603cb27484db05e0f39.jpg*/
+/*https://th.bing.com/th/id/R00cfa2068672e3bfb795791dcd7f1671?rik=1Y8WXF69KAgclQ&riu=http%3a%2f%2fpictures.4ever.eu%2fdata%2fdownload%2faviation%2fairport%2c-night-227786.jpg%3fno-logo&ehk=qK27dTxVB1NXI4nenxE%2bCSxfK5JfAiFwavJT7e5PKsw%3d&risl=&pid=ImgRaw*/
 </style>
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 </head>
-<body class = "gradient-custom">
+<body class = "gradient-custom" id = "section1">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -56,6 +58,8 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
                         <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
+                        <a class="dropdown-item" href="./searchtrips">Search Customer Trips</a>
+                        <a class="dropdown-item" href="./searchcustomers">Search Customers</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -63,6 +67,7 @@
                         Pilots
                     </a>
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="./searchpilots">Search Pilot</a>
                         <a class="dropdown-item" href="./addpilot">Register Pilot</a>
                     </div>
                 </li>
@@ -89,7 +94,7 @@
 <div style = "height: 5em;"></div>
 <div class="row">
     <div class="col-sm-3" align = "center">
-        <div class="card text-center" style="width: 18rem; border-color: red; border-radius: 1.5em; background-color: rgb(255,235,235)">
+        <div class="card text-center" style="width: 18rem; border-color: red; border-radius: 1.5em; background-color: rgba(255,235,235, 0.9">
             <img class="card-img-top" src="../Images/raw_plane.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title" style = "color: #292986;">Flights</h5>
@@ -100,7 +105,7 @@
         </div>
     </div>
     <div class="col-sm-3" align = "center" >
-        <div class="card text-center" style="width: 18rem; border-color: blue; border-radius: 1.5em; background-color: rgb(235,235,255);">
+        <div class="card text-center" style="width: 18rem; border-color: blue; border-radius: 1.5em; background-color: rgba(235,235,255, 0.9);">
             <img class="card-img-top" src="../Images/customer.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title" style = "color: #292986;">Customers</h5>
@@ -111,7 +116,7 @@
         </div>
     </div>
     <div class="col-sm-3" align = "center">
-        <div class="card text-center" style="width: 18rem; border-color: green; border-radius: 1.5em; background-color: rgb(232,255,232);">
+        <div class="card text-center" style="width: 18rem; border-color: green; border-radius: 1.5em; background-color: rgba(232,255,232,0.9);">
             <img class="card-img-top" src="../Images/raw_pilot.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title" style = "color: #292986;">Pilots</h5>
@@ -122,7 +127,7 @@
         </div>
     </div>
     <div class="col-sm-3" align = "center">
-        <div class="card text-center" style="width: 18rem; border-color: yellow; border-radius: 1.5em; background-color: rgb(255,255,231)">
+        <div class="card text-center" style="width: 18rem; border-color: yellow; border-radius: 1.5em; background-color: rgba(255,255,231,0.9)">
             <img class="card-img-top" src="../Images/raw_airport.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title" style = "color: #292986;">Airports</h5>

@@ -65,6 +65,8 @@
           <div class="dropdown-menu">
             <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
             <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
+            <a class="dropdown-item" href="./searchtrips">Search Customer Trips</a>
+            <a class="dropdown-item" href="./searchcustomers">Search Customers</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -72,6 +74,7 @@
             Pilots
           </a>
           <div class="dropdown-menu">
+            <a class="dropdown-item" href="./searchpilots">Search Pilot</a>
             <a class="dropdown-item" href="./addpilot">Register Pilot</a>
           </div>
         </li>
@@ -80,6 +83,7 @@
             Airports
           </a>
           <div class="dropdown-menu">
+            <a class="dropdown-item" href="./searchairports">Search Airports</a>
             <a class="dropdown-item" href="./addairport">Register Airport</a>
           </div>
         </li>
@@ -87,7 +91,6 @@
     </div>
   </div>
 </nav>
-
 <div class="container register">
   <div style = "height: 3em;"></div>
   <div class = "row">
@@ -101,11 +104,11 @@
         <div style = "height: 1em;"></div>
         <h6>Flight Number: </h6>
         <div style = "height: 1em;"></div>
-        <h6>Departure Airport: </h6>
+        <h6>Departure Airport ID: </h6>
         <div style = "height: 1em;"></div>
         <h6>Departure Date/Time: </h6>
         <div style = "height: 1em;"></div>
-        <h6>Arrival Airport: </h6>
+        <h6>Arrival Airport ID: </h6>
         <div style = "height: 1em;"></div>
         <h6>Arrival Date/Time: </h6>
         <div style = "height: 1em;"></div>
@@ -152,7 +155,7 @@
 </div>
 <footer class="footer" id = "footer">
   <div class="container">
-    <span class="text-muted" style="color: darkgray;">Want to return to searching for flights? Search for other flights <a href="../Pages/FlightSearch.html" style="color: whitesmoke;">here</a></span>
+    <span class="text-muted" style="color: darkgray;">Want to return to searching for flights? Search for other flights <a href="/searchflights" style="color: whitesmoke;">here</a></span>
   </div>
 </footer>
 <!-- Default form contact -->

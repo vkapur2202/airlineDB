@@ -10,6 +10,19 @@
     background: linear-gradient(to right, rgba(49, 76, 140, 1), rgba(74, 123, 161, 1));
   }
 
+  .options-overlay {
+    /* fallback for old browsers */
+    /*background: rgba(49, 76, 140, 0.73);*/
+    background: rgba(37, 57, 104, 0.90);
+  }
+
+  #footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:2em;
+    background: #101010; }
+
 </style>
 
 <html>
@@ -19,6 +32,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 </head>
 <body class = "gradient-custom" align = "center">
@@ -81,69 +95,70 @@
 <div class="container register">
   <div style = "height: 3em;"></div>
   <div class = "row">
-    <h1 style = "color: white;">Register a New Pilot</h1>
+    <h1 style = "color: white;">Trip Detail</h1>
   </div>
   <div style = "height: 2em;"></div>
   <div class="row">
-    <div class = "col-md-4"></div>
-    <div class="col-md-4">
-      <div class="row register-form" align="center">
-        <div class="col-md-12">
-          <div class="form-group">
-            <input type="text" id = "pCreateUsername" class="form-control" placeholder="Username" value="">
-          </div>
-          <div style = "height: 1em;"></div>
-          <div class="form-group">
-            <input id = "pCreateFirstName" type="text" class="form-control" placeholder="First Name" value="">
-          </div>
-          <div style = "height: 1em;"></div>
-          <div class="form-group">
-            <input id = "pCreateLastName" type="text" class="form-control" placeholder="Last Name" value="">
-          </div>
-        </div>
+    <div class="col-md-12">
+      <div class="col-md-2"></div>
+      <div class="col-md-2 options-overlay" align="left" style = "color: whitesmoke;">
+        <div style = "height: 1em;"></div>
+        <h6>Trip Number: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Trip Customer ID: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Trip Flight ID: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Trip Ticket Price: </h6>
+        <div style = "height: 1em;"></div>
+        <h6>Trip Booking Time: </h6>
+        <div style = "height: 1em;"></div>
       </div>
+      <div class="col-md-6 options-overlay" align="left" style = "color: ghostwhite;">
+        <div style = "height: 1em;"></div>
+        <h6><%= data.tid %></h6>
+        <div style = "height: 1em;"></div>
+        <h6><%= data.cid %></h6>
+        <div style = "height: 1em;"></div>
+        <h6><%= data.fid %></h6>
+        <div style = "height: 1em;"></div>
+        <h6><%= data.ticketprice %>.00</h6>
+        <div style = "height: 1em;"></div>
+        <h6><%= data.timecreated %></h6>
+        <div style = "height: 1em;"></div>
+      </div>
+      <div class="col-md-2"></div>
     </div>
   </div>
-  <div class = "col-md-4"></div>
-</div>
-<div style = "height: 1em;"></div>
-<div class = "row">
-  <div class = "col-md-5">
-  </div>
-  <div class = "col-md-2">
-    <input onclick = "return createPilot()" type="submit" class="btnRegister btn-info btn-block" style = "border-radius: 1em;"value="Create">
-  </div>
-  <div class = "col-md-5">
+  <div style = "height: 2em;"></div>
+  <div class="row">
+    <div class="col">
+      <button onclick = "return deleteTripDetails(<%= data.tid %>)" style="background-color: #aa0b0b; height: 3em; width: 20em; color: whitesmoke;">Delete Trip <i class="fa fa-trash-o" style="font-size:1em;color:white;"></i></button>
+    </div>
   </div>
 </div>
-<div style = "height: 2em;"></div>
-<div class = "row">
-</div>
-</div>
-<!-- Default form contact -->
-<!-- Default form contact -->
-</body>
-</html>
-
+<footer class="footer" id = "footer">
+  <div class="container">
+    <span class="text-muted" style="color: darkgray;">Want to return to searching for flights? Search for other flights <a href="../Pages/FlightSearch.html" style="color: whitesmoke;">here</a></span>
+  </div>
+</footer>
 <script>
-  function createPilot() {
+  function deleteTripDetails(tid) {
     // Form fields, see IDs above
+    console.log(tid)
     const params = {
-      pfname: document.querySelector('#pCreateFirstName').value,
-      plname: document.querySelector('#pCreateLastName').value,
-      puname: document.querySelector('#pCreateUserName').value,
+      tid: tid
     }
-
     const http = new XMLHttpRequest()
-    http.open('POST', '/addpilot')
+    http.open('DELETE', '/searchtripdetail')
     http.setRequestHeader('Content-type', 'application/json')
     http.send(JSON.stringify(params)) // Make sure to stringify
     console.log("here")
     http.onload = function() {
       // Do whatever with response
-      console.log("Reached here")
-      alert(http.responseText)
+      document.write("<font color='#f5f5f5'>"+ http.responseText +"</font>")
     }
   }
 </script>
-
+</body>
+</html>

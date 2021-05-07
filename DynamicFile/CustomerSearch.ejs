@@ -67,7 +67,7 @@
     <div style = "height: 3em;"></div>
     <div class = "row">
         <div class = "col-lg-12" style="color: whitesmoke;">
-            <h1>Search for your Airport</h1>
+            <h1>Search for your Customer</h1>
         </div>
     </div>
     <div style = "height: 2em;"></div>
@@ -75,18 +75,18 @@
         <div class = "col" align="center">
             <form class="form-inline">
                 <div class="form-group mr-2">
-                    <label class="sr-only">Airport Name</label>
-                    <input type="text" class="form-control" id="nameAInput" placeholder="Airport Name">
+                    <label class="sr-only">Customer Email</label>
+                    <input type="text" class="form-control" id="cemail" placeholder="Customer Email">
                 </div>
                 <div class="form-group mr-2">
-                    <label class="sr-only">Airport City</label>
-                    <input type="text" class="form-control" id="cityAInput" placeholder="Airport City">
+                    <label class="sr-only">Customer First Name</label>
+                    <input type="text" class="form-control" id="cfirstname" placeholder="Customer First Name">
                 </div>
                 <div class="form-group mr-2">
-                    <label class="sr-only">Airport Country</label>
-                    <input type="text" class="form-control" id="countryAInput" placeholder="Airport Country">
+                    <label class="sr-only">Customer Last Name</label>
+                    <input type="text" class="form-control" id="clastname" placeholder="Customer Last Name">
                 </div>
-                <button onclick = "return searchAirports()" class="btn btn-primary">Search</button>
+                <button onclick = "return searchCustomers()" class="btn btn-primary">Search</button>
             </form>
         </div>
     </div>
@@ -95,53 +95,46 @@
             <div class = "col-lg-1">
             </div>
             <div class = "col-lg-10 options-overlay" style = "height: 4rem;">
-                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;"></div>
                 <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-                    <h6>Airport Number</h6>
+                    <h6>Customer ID</h6>
                 </div>
                 <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-                    <h6>Airport Name</h6>
+                    <h6>Customer Email</h6>
                 </div>
                 <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-                    <h6>Airport City</h6>
+                    <h6>Customer First Name</h6>
                 </div>
                 <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-                    <h6>Airport Country</h6>
+                    <h6>Customer Last Name</h6>
                 </div>
-                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
-                    <h6>Airport Num Gates</h6>
-                </div>
-                <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+                <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;"></div>
             </div>
             <div class = "col-lg-1">
             </div>
     </div>
-    <%data.forEach(function(airport) {%>
+    <%data.forEach(function(customer) {%>
         <div class = "row" >
             <div class = "col-lg-1">
             </div>
             <div class = "col-lg-10 options-mini-1">
-                    <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+                    <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;"></div>
                     <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                        <p><%= airport.aid %></p>
+                        <p><%= customer.cid %></p>
                     </div>
                     <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                        <p><%= airport.aname %></p>
+                        <p><%= customer.username %></p>
                     </div>
                 
                     <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                        <p><%= airport.city %></p>
+                        <p><%= customer.firstname %></p>
                     </div>
                     
                     <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                        <p><%= airport.country %></p>
+                        <p><%= customer.lastname %></p>
                     </div>
 
-                    <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                        <p><%= airport.numgates %></p>
-                    </div>
-
-                    <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
+                    <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;"></div>
                 </a>
             </div>
             <div class = "col-lg-1">
@@ -150,24 +143,24 @@
         <% }); %>
     <footer class="footer" id = "footer">
             <div class="container">
-                <span class="text-muted" style="color: darkgray;">Couldn't find the airport you were looking for? Register an airport <a href="/addairport" style="color: whitesmoke;">here</a></span>
+                <span class="text-muted" style="color: darkgray;">Couldn't find the customer you were looking for? Register a customer <a href="/addcustomer" style="color: whitesmoke;">here</a></span>
             </div>
         </footer>
 </div>
 </body>
 </html>
 <script>
-    function searchAirports() {
+    function searchCustomers() {
 
         // Form fields, see IDs above
         const params = {
-            name: document.querySelector('#nameAInput').value,
-            city: document.querySelector('#cityAInput').value,
-            country: document.querySelector('#countryAInput').value
+            cemail: document.querySelector('#cemail').value,
+            cfirstname: document.querySelector('#cfirstname').value,
+            clastname: document.querySelector('#clastname').value
         }
 
         const http = new XMLHttpRequest()
-        http.open('POST', '/searchairports/search')
+        http.open('POST', '/searchcustomers/search')
         http.setRequestHeader('Content-type', 'application/json')
         http.send(JSON.stringify(params)) // Make sure to stringify
         http.onload = function() {

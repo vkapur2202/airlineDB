@@ -37,6 +37,8 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="./addcustomer">Register New Customer</a>
                             <a class="dropdown-item" href="./addcustomeronflight">Add Customer to Flight</a>
+                            <a class="dropdown-item" href="./searchtrips">Search Customer Trips</a>
+                            <a class="dropdown-item" href="./searchcustomers">Search Customers</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -44,6 +46,7 @@
                             Pilots
                         </a>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" href="./searchpilots">Search Pilot</a>
                             <a class="dropdown-item" href="./addpilot">Register Pilot</a>
                         </div>
                     </li>
@@ -72,11 +75,11 @@
     <div class = "col" align="center">
         <form class="form-inline">
             <div class="form-group mr-2">
-                <label class="sr-only">Departure Airport</label>
+                <label class="sr-only">Departure Airport ID</label>
                 <input type="text" class="form-control" id="depAInput" placeholder="Departure Airport">
             </div>
             <div class="form-group mr-2">
-                <label class="sr-only">Arrival Airport</label>
+                <label class="sr-only">Arrival Airport ID</label>
                 <input type="text" class="form-control" id="arrAInput" placeholder="Arrival Airport">
             </div>
             <div class="form-group mr-2">
@@ -96,23 +99,21 @@
     <div class = "col-lg-1">
     </div>
     <div class = "col-lg-10 options-overlay" style = "height: 4rem;">
-        <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
         <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
             <h6>Flight Number</h6>
         </div>
         <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
             <h6>Departure Airport</h6>
         </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+        <div class = "col-md-3" style = "color: whitesmoke; padding-top: 1.5em;">
             <h6>Departure Time</h6>
         </div>
         <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
             <h6>Arrival Airport</h6>
         </div>
-        <div class = "col-md-2" style = "color: whitesmoke; padding-top: 1.5em;">
+        <div class = "col-md-3" style = "color: whitesmoke; padding-top: 1.5em;">
             <h6>Arrival Time</h6>
         </div>
-        <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
     </div>
     <div class = "col-lg-1">
     </div>
@@ -123,23 +124,21 @@
     </div>
     <div class = "col-lg-10 options-mini-1">
         <a onclick = "return searchFlightDetails(<%= flight.fid %>)">
-            <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
             <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
                 <p><%= flight.fid %></p>
             </div>
             <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
                 <p><%= flight.startaid %></p>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>test</p>
+            <div class = "col-md-3" style = "color: whitesmoke; padding-top: 0.5em;" align = "center">
+                <p><%= flight.departuredate.toString().substring(0, 25)%></p>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
+            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;" align = "center">
                 <p><%= flight.destinationaid %></p>
             </div>
-            <div class = "col-md-2" style = "color: whitesmoke; padding-top: 0.5em;">
-                <p>test</p>
+            <div class = "col-md-3" style = "color: whitesmoke; padding-top: 0.5em;" align = "center">
+                <p><%= flight.arrivaldate.toString().substring(0, 25) %></p>
             </div>
-            <div class = "col-md-1" style = "color: whitesmoke; padding-top: 1.5em;"></div>
         </a>
     </div>
     <div class = "col-lg-1">
@@ -148,7 +147,7 @@
 <% }); %>
 <footer class="footer" id = "footer">
     <div class="container">
-        <span class="text-muted" style="color: darkgray;">Couldn't find the flight you were looking for? Register a flight <a href="../Pages/FlightCreate.html" style="color: whitesmoke;">here</a></span>
+        <span class="text-muted" style="color: darkgray;">Couldn't find the flight you were looking for? Register a flight <a href="/createflight" style="color: whitesmoke;">here</a></span>
     </div>
 </footer>
 </body>
@@ -215,7 +214,7 @@
 
     .options-mini-1{
         background: rgba(49, 76, 140, 0.73);
-        height: 2.5rem;
+        height: 3.5rem;
     }
 
     .options-mini-1:hover{
